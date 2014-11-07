@@ -11,12 +11,33 @@
    		</div>
 		<div id='response'></div>
 		<script src="js\zepto.js"></script>
-		<script>
-			$('#emergency').click(function(){
-				$('#response').html('Hilfe ist unterwegs!');
-			});
+		<form name = 'login' action = 'http://gg-dev.de/verify.php' >
+			Username <input type = 'text' id ='username' name ='username' /> </br>
+			Passwort <input type = 'text' id ='password' name ='Password'/> </br>
+			<input type="submit" value="Login">
 			
-			<!-- Kommentar -->
-		</script>
+			<script>
+			
+			//die Funktion validate() läd den inhalt der Validate.php per ajax ohne die das Formular abzuschicken
+			//<input type="button" value="Login" onclick="validate()">
+			//@todo rausfinden wie auf einzelne Elemente zugegriffen werden kann... 
+			/*
+			 * etwa so : 
+			 * 
+			 * 
+			 * if(login == "true"){ lade Seiteninhalt}
+			 *  			else { mache Fehlermeldung }
+			 * 
+			 */
+			function validate(){
+			var username = document.getElementById('username').value;	
+			var password = document.getElementById('password').value;
+			$.get('/http://gg-dev.de/verify.php?username='+username+'&Password='+password, function(response){
+  			var response = $(document.body).append(response);
+			});
+			}
+			</script>		
+		</form>
+
 	</body>
 </html>
