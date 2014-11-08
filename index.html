@@ -2,49 +2,16 @@
 	<head>
   		<meta charset="utf-8">
   		<title>MedFlight App</title>
-
+		<script src="js\validate.js"></script>
+		<script src="js\zepto.js"></script>
 	</head>
 	<body>
-  		<div id="button"> 
-    		<h1>Jetzt Hilfe holen!!!</h1>
-    		<button id='emergency'><img src="img/button.png"></button>
-   		</div>
-		<div id='response'></div>
-		<script src="js\zepto.js"></script>
-		<form name = 'login'  >
-			Username <input type = 'text' id ='username' name ='username' /> </br>
-			Passwort <input type = 'text' id ='password' name ='Password'/> </br>
-			<input type="button" value="Login" onclick="validate()">
-
-			<script>
-			
-			//die Funktion validate() läd den inhalt der Validate.php per ajax ohne die das Formular abzuschicken
-			//@todo rausfinden wie auf einzelne Elemente zugegriffen werden kann... 
-			/*
-			 * etwa so : 
-			 * 
-			 * 
-			 * if(login == "true"){ lade Seiteninhalt}
-			 *  			else { mache Fehlermeldung }
-			 * 
-			 */
-			function validate(){
-			var username = document.getElementById('username').value;	
-			var password = document.getElementById('password').value;
-			$.getJSON( "http://gg-dev.de/verify.php?username="+username+"&Password="+password, function( data ) {
-			  var items = [];
-			  $.each( data, function( key, val ) {
-				items.push( "<li id='" + key + "'>" + val + "</li>" );
-			  });
-			 
-			  $( "<ul/>", {
-				"class": "my-new-list",
-				html: items.join( "" )
-			  }).appendTo( "body" );
-			});
-
-			}
-			</script>		
-		</form>
+		<div id = "main">
+			<form name = 'login'  >
+				Username <input type = 'text' id ='username' name ='username' /> </br>
+				Passwort <input type = 'text' id ='password' name ='Password'/> </br>
+				<input type="button" value="Login" onclick="validate()">
+			</form>
+		</div>
 	</body>
 </html>
