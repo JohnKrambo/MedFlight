@@ -11,23 +11,23 @@
 			$.getJSON( "http://gg-dev.de/verify.php?username="+username+"&Password="+password, function createArrays( data ) {
 			  var keys = [];
 			  var values = [];
-			for (var property in data) {
+				for (var property in data) {
    				if ( ! data.hasOwnProperty(property)) {
       				continue;
    					}
   				 keys.push(property);
    				 values.push(data[property]);
 					}
-					
 					if (values[0] == "true" ) {
+					//emptys the main div
 					$('#main').html("");
+					//posts the message and the emergency Button in the main div
 					$('#main').html("Hallo" + " " + values[2] + " " + values[3] + 
 					"</br>" + "Bitte nennen Sie die Art des medizinischen Notfalls:" + "</br>" + "<input type='button'name='button'value='" + values[6]+"'>");
 					}
 					else {
 					$('#main').html("Login Failed");
 					}
-					console.log(values);
 				});
 
 			}
