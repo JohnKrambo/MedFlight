@@ -1,0 +1,42 @@
+<!doctype html>
+	<head>
+  		<meta charset="utf-8">
+  		<title>MedFlight App</title>
+		<script src="js\cordova-2.1.0.js"></script>
+		<script src="js\validate.js"></script>
+		<script src="js\zepto.js"></script>
+		<script src="js\app.js"></script>
+           <script>
+		   	function geolocation(){
+		   		var options = {enableHighAccuracy: true};
+		   		watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+//function on Success gibt die Position zurück in einem PositionObjekt	
+	function onSuccess(position) {
+		var lat = position.coords.latitude;
+		var lng = position.coords.longitude;
+		
+		localStorage.setItem("latitude",lat);
+		localStorage.setItem("longitude",lng);
+		
+		alert("lat: " + lat + "long: " + lng );
+		
+		
+	}	   		
+		function onError(error){
+			alert("you dont have service"+ error.message); 
+		}		   		
+		   		
+		   	}
+		   geolocation();
+		</script>     
+	</head>
+	<body>
+		<div id = "main">
+            Login aktiv. Daten im Storage. <a href='clear.html'>löschen</a>
+           <br>
+    <div id="karte"></div>
+		</div>
+        
+
+	</body>
+</html>
