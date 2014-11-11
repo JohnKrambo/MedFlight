@@ -1,73 +1,49 @@
-<!doctype html>
-	<head>
-  		<meta charset="utf-8">
-  		<title>MedFlight App</title>
-		    <style>
-      		html, body, #map-canvas {
-       		 	height: 100%;
-        		margin: 0px;
-        		padding: 0px
-     			 }
-    		</style>
-		
-		<script src="js\cordova-2.1.0.js"></script>
-		<script src="js\validate.js"></script>
-		<script src="js\zepto.js"></script>
-		<script src="js\app.js"></script>
-		 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-           <script>
-		   	function geolocation(){
-		   		var options = {enableHighAccuracy: true};
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script>
+var map;
+function initialize() {
+  		var options = {enableHighAccuracy: true};
 		   		watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
-//function on Success gibt die Position zurück in einem PositionObjekt	
-	function onSuccess(position) {
+		//function on Success gibt die Position zurück in einem PositionObjekt	
+		function onSuccess(position) {
 		var lat = position.coords.latitude;
 		var lng = position.coords.longitude;
-		var map;
-				 
+		
 		localStorage.setItem("latitude",lat);
 		localStorage.setItem("longitude",lng);
-		
-		
-		var mapOptions = {
-    		zoom: 8,
-    		center: new google.maps.LatLng(lat, lng)
-  			};
-  			map = new google.maps.Map(document.getElementById('map-canvas'),
-      			mapOptions);
-
-
-				google.maps.event.addDomListener(window, 'load', onSuccess);
-
-		
-		
+								
 	}	   		
 		function onError(error){
 			alert("you dont have service"+ error.message); 
-		
-		var mapOptions = {
-    		zoom: 8,
-    		center: new google.maps.LatLng(48.5909355, 9.36070871)
-  			};
-  			map = new google.maps.Map(document.getElementById('map-canvas'),
-      			mapOptions);
-
-
-				google.maps.event.addDomListener(window, 'load', initialize);
-		
 		}		   		
-		   		
-		   	}
-		   geolocation();
-		</script>     
-	</head>
-	<body>
-		<div id = "main">
-            Login aktiv. Daten im Storage. <a href='clear.html'>löschen</a>
-           <br>
-    <div id="map-canvas"></div>
-		</div>
-        
+  
+  
+  var mapOptions = {
+     zoom: 8,
+    center: new google.maps.LatLng(lat, lng)
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+}
 
-	</body>
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
 </html>
