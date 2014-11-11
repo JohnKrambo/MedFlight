@@ -6,6 +6,7 @@
 		<script src="js\validate.js"></script>
 		<script src="js\zepto.js"></script>
 		<script src="js\app.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
            <script>
 		   	function geolocation(){
 		   		var options = {enableHighAccuracy: true};
@@ -18,7 +19,19 @@
 		localStorage.setItem("latitude",lat);
 		localStorage.setItem("longitude",lng);
 		
-		alert("lat: " + lat + "long: " + lng );
+		//alert("lat: " + lat + "long: " + lng );
+		var map;
+		function initialize() {
+  			var mapOptions = {
+    zoom: 8,
+    center: new google.maps.LatLng(lat, lng)
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
 		
 		
 	}	   		
@@ -34,7 +47,7 @@
 		<div id = "main">
             Login aktiv. Daten im Storage. <a href='clear.html'>löschen</a>
            <br>
-    <div id="karte"></div>
+    <div id="map-canvas"></div>
 		</div>
         
 
