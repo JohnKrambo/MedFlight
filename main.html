@@ -1,0 +1,43 @@
+<!doctype html>
+	<head>
+  		<meta charset="utf-8">
+  		<title>MedFlight App</title>
+		<script src="js\validate.js"></script>
+		<script src="js\zepto.js"></script>
+           <script>
+		   	// wenn kein Login weiterleiten auf index.html für Login
+			if (localStorage.getItem("login") != "true") {
+					window.location = "index.html";
+
+			}
+			
+			
+			
+			$(function() {
+			
+				// alle krankheiten laden aus localstorage
+				 diseases = new Array(localStorage.getItem("disease0"),localStorage.getItem("disease1"),localStorage.getItem("disease2"),localStorage.getItem("disease3"));
+					var index;
+					for (index = 0; index < diseases.length; ++index) {
+						//undefined entfernen
+						if(diseases[index] != "undefined"){
+							console.log(diseases[index]);
+							$( "#diseases" ).append( '<a href="#'+diseases[index]+'" class="btn">'+diseases[index]+'</a> <br>' );
+							}
+					}
+			});
+
+		</script>     
+	</head>
+	<body>
+		<div id = "main">
+            Login aktiv. Daten im Storage. <a href='clear.html'>löschen</a>
+           <br>
+			<div id="diseases">
+
+            </div><!-- // #diseases // -->
+		</div>
+        
+
+	</body>
+</html>

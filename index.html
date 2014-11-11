@@ -4,6 +4,13 @@
   		<title>MedFlight App</title>
 		<script src="js\validate.js"></script>
 		<script src="js\zepto.js"></script>
+           <script>
+			if (localStorage.getItem("login") == "true") {
+					//$( "#main" ).replaceWith("<div>Login aktiv. Daten im Storage. <a href='clear.html'>löschen</a></div>");
+					window.location = "main.html";
+
+			}
+		</script>     
 	</head>
 	<body>
 		<div id = "main">
@@ -13,5 +20,7 @@
 				<input type="button" value="Login" onclick="validate()">
 			</form>
 		</div>
+        
+
 	</body>
 </html>
