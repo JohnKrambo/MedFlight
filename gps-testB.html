@@ -15,12 +15,24 @@
 	function onSuccess(position) {
 		var lat = position.coords.latitude;
 		var lng = position.coords.longitude;
-		
+		var map;
+				 
 		localStorage.setItem("latitude",lat);
 		localStorage.setItem("longitude",lng);
 		
-		alert("lat: " + lat + "long: " + lng );
-				
+		
+		var mapOptions = {
+    		zoom: 8,
+    		center: new google.maps.LatLng(lat, lng)
+  			};
+  			map = new google.maps.Map(document.getElementById('map-canvas'),
+      			mapOptions);
+
+
+				google.maps.event.addDomListener(window, 'load', initialize);
+
+		
+		
 	}	   		
 		function onError(error){
 			alert("you dont have service"+ error.message); 
