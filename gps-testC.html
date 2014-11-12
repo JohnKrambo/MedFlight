@@ -14,26 +14,6 @@
 		
            <script>
 
-
-		   	function geolocation(){
-		   		var options = {enableHighAccuracy: true};
-		   		watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
-//function on Success gibt die Position zurück in einem PositionObjekt	
-	function onSuccess(position) {
-		 lat = position.coords.latitude;
-		 lng = position.coords.longitude;
-		
-
-	}	   		
-		function onError(error){
-			alert("you dont have service"+ error.message); 
-		}		   		
-		   		
-		   	}
-		   geolocation();
-
-
-		
 function GoogleMap(){
  
 this.initialize = function(){
@@ -44,7 +24,10 @@ var options = {enableHighAccuracy: true};
 function onSuccess(position) {
 		 lat = position.coords.latitude;
 		 lng = position.coords.longitude;
-	}	   				   		 
+	}	
+	function onError(error){
+			alert("you dont have service"+ error.message); 
+		}		   		   				   		 
  
  var showMap = function(){
 var mapOptions = {
@@ -52,7 +35,7 @@ zoom: 4,
 center: new google.maps.LatLng(lat, lng),
 mapTypeId: google.maps.MapTypeId.ROADMAP
 }
- 
+ alert("lat: " + lat + "long: " + lng );
 var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
  
 return map;
