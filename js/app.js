@@ -21,20 +21,26 @@
 		}		   		
 		   		
 		   	}
-		// geolocation();
+		// 
 
  
  
  
- 	var map;
+
+	  
+	  function initialize() {
+		  
+		  geolocation();
+		 	var map;
    	var lat = localStorage.getItem("latitude") 
    	var lng = localStorage.getItem("longitude") 
 	  var aktuellePosition =new google.maps.LatLng(lat,lng);
 	// aktivieren wenn wir irgendwann mit 2 Markern Arbeiten wollen ( 0: Standort, 1: Ankunft Drohen)
 	//  var ankunft =new google.maps.LatLng(48.17055,11.550579);
-      
-	  
-	  function initialize() {
+        
+		  
+		  
+		  
         var mapOptions = {
           zoom: 12,
           center: new google.maps.LatLng(lat,lng),
