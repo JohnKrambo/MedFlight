@@ -13,8 +13,23 @@
 		<script src="js\app.js"></script>
 		
            <script>
-	lat = 48.5909355;
-	lng = 9.36070871;
+		   	function geolocation(){
+		   		var options = {enableHighAccuracy: true};
+		   		watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+//function on Success gibt die Position zurück in einem PositionObjekt	
+	function onSuccess(position) {
+		var lat = position.coords.latitude;
+		var lng = position.coords.longitude;
+		
+		localStorage.setItem("latitude",lat);
+		localStorage.setItem("longitude",lng);
+				
+	}	   		
+		function onError(error){
+			alert("you dont have service"+ error.message); 
+		}		   		
+		   		
+		   	}
 
 function GoogleMap(){
  
@@ -25,8 +40,8 @@ var map = showMap();
  
  var showMap = function(){
 var mapOptions = {
-zoom: 4,
-center: new google.maps.LatLng(lat, lng),
+zoom: 8,
+center: new google.maps.LatLng(localStorage.getItem("latitude"), localStorage.getItem("longitude")),
 mapTypeId: google.maps.MapTypeId.ROADMAP
 }
 var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
