@@ -1,0 +1,80 @@
+<!doctype html>
+	<head>
+  		<meta charset="utf-8">
+  		<title>MedFlight App</title>
+		<script src="phonegap.js"></script>
+		<script src="js\validate.js"></script>
+		<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
+		<style>
+			#map_canvas {width:300px; height:300px;}
+		</style>
+		<script src="js\app.js"></script>
+		
+           <script>
+		   	function geolocation(){
+		   		var options = {enableHighAccuracy: true};
+		   		watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+//function on Success gibt die Position zurück in einem PositionObjekt	
+	function onSuccess(position) {
+		var lat = position.coords.latitude;
+		var lng = position.coords.longitude;
+		
+		localStorage.setItem("latitude",lat);
+		localStorage.setItem("longitude",lng);
+				
+	}	   		
+		function onError(error){
+			alert("you dont have service"+ error.message); 
+		}		   		
+		   		
+		   	}
+
+function GoogleMap(){
+ 
+this.initialize = function(){
+var map = showMap();
+}
+
+ 
+ var showMap = function(){
+var mapOptions = {
+zoom: 8,
+center: new google.maps.LatLng(localStorage.getItem("latitude"), localStorage.getItem("longitude")),
+mapTypeId: google.maps.MapTypeId.ROADMAP
+}
+var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+ 
+return map;
+}
+}
+
+		
+		
+		// wenn kein Login weiterleiten auf index.html für Login
+			if (localStorage.getItem("login") != "true") {
+					window.location = "index.html";
+
+			}
+			
+			
+$( document ).ready(function() {
+    var map = new GoogleMap();
+    map.initialize();})
+
+
+
+		</script>     
+		
+
+	</head>
+	<body>
+		<div id = "main">
+            Login aktiv. Daten im Storage. <a href='clear.html'>löschen</a>
+           <br>
+<div id="map_canvas">
+</div>
+
+	</body>
+</html>
