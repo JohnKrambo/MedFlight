@@ -23,11 +23,7 @@
 		 lat = position.coords.latitude;
 		 lng = position.coords.longitude;
 		
-		localStorage.setItem("latitude",lat);
-		localStorage.setItem("longitude",lng);
-		
-		alert("lat: " + lat + "long: " + lng );
-				
+
 	}	   		
 		function onError(error){
 			alert("you dont have service"+ error.message); 
@@ -43,6 +39,12 @@ function GoogleMap(){
 this.initialize = function(){
 var map = showMap();
 }
+var options = {enableHighAccuracy: true};
+		   		watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+function onSuccess(position) {
+		 lat = position.coords.latitude;
+		 lng = position.coords.longitude;
+	}	   				   		 
  
  var showMap = function(){
 var mapOptions = {
