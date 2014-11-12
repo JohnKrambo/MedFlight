@@ -53,10 +53,16 @@
           position:aktuellePosition,
           map: map,		
 		  icon:marker,
-          title: 'Aktuelle Position'
+          title: 'Aktuelle Position',
+		  animation: google.maps.Animation.DROP,
+
         });
 		
 		
+		  // On idle, change marker animation to bounce
+    google.maps.event.addListener(map, 'idle', function () {
+        marker1.setAnimation(google.maps.Animation.BOUNCE);
+    });
 		/*
 		
 		aktivieren wenn 2 Marker, s.o.
