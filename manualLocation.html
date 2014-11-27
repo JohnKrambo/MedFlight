@@ -1,0 +1,35 @@
+<!doctype html>
+	<head>
+  		<meta charset="utf-8">
+  		<title>MedFlight App</title>
+		<script src="js\validate.js"></script>
+		<script src="js\zepto.js"></script>
+	</head>
+	<body>
+		<div id = "main">
+ 			Your GPS is not activated or doesn´t work!</br>
+ 			Please enter your position manually or call an emrgency</br>
+ 			<button> Call 112 </button></br>
+ 			Or get a </br>
+ 			<button> Home delivery</button></br>
+ 		 	(your address is saved in this App)</br>
+ 			</br> If you´re not at home and you don´t want to call an emergency, Enter your Location here: </br> 	
+ 				<table id="address">
+ 					<tr>
+      					<td align="right">City:</td>
+      					<td><input name="city" type="text" size="15" maxlength="30"></td>
+    				</tr>
+    				<tr>
+      					<td align="right">PLZ:</td>
+      					<td><input name="plz" type="text" size="15" maxlength="40"></td>
+    				</tr>
+   					 <tr>
+      					<td align="right">Street:</td>
+     					<td><input name="street" type="text" size="15" maxlength="40"><input name="street" type="text" size="3" maxlength="40"></td>
+    				</tr>
+ 				</table>
+ 			</br>
+ 			<button id ="submit">Order drone</button>	
+ 		</div>
+     </body>
+</html>
